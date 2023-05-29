@@ -1,66 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://browsertravelsolutions.com/" target="_blank"><img src="https://browsertravelsolutions.com/wp-content/uploads/2022/02/Logo-1.png" width="400" alt="Browser Travel Solutions"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Configuración del proyecto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+De acuerdo a los requerimientos de la prueba para desarrollo práctico en el proceso de selección, estos son los puntos a seguir para la configuración del proyecto.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Se asume como primer punto que Apache2, MySQL y PHP 8.1> ya han sido instalados y configurados en el servidor.
+-   Instalar composer de manera global para nuestro sistema operativo.
+-   Crear la base de datos en nuestro MySQL.
+-   Bajar el repositorio al servidor donde correremos nuestra aplicación.
+-   Configurar el archivo con las variables de entorno para nuestra aplicación.
+-   Bajar las dependencias del proyecto.
+-   Realizar migraciones de las tablas a la base de datos y correr el proyecto.
+-   Construir aplicación front
 
-## Learning Laravel
+## Instalar composer
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+En el siguiente enlace podemos encontrar una guía completa sobre la instalación y configuración de Composer en nuestro S.O de manera global [composer](https://getcomposer.org/doc/00-intro.md).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Crear base de datos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Creamos la base de datos para nuestra aplicación, a continuación podemos ver el comando para realizar esto en nuestro MySQL, `nombre_bd` puede ser cualquier denominación sin caracteres especiales ni espacios.
 
-## Laravel Sponsors
+-   CREATE DATABASE `nombre_bd` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Clonar repositorio
+Copiamos el repositorio al root de nuestro servidor apache, _weather_map_ puede ser cualquier denominación sin caracteres especiales.
 
-### Premium Partners
+-   git clone https://github.com/pablomadariaga/weather_map.git _weather_map_
+-   Ahora ingresamos a nuestra carpeta **weather_map**, de aquí en adelante los pasos a seguir son dentro de esta ruta
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Configurar .env
 
-## Contributing
+Después de clonar nuestro repositorio, accedemos a nuestro proyecto desde la terminal, luego debemos duplicar el archivo **.env.example** con el nombre del nuevo archivo igual a **.env** y configurar las siguientes variables.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   comando: cp .env.example .env
+-   variables
+    1. APP_NAME = 'El nombre que queramos para el proyecto'
+    1. APP_URL = 'Url o IP designada para correr el proyecto'
+    1. OPENWEATHERMAP_API_KEY = Credencial de OPEN WEATHER MAP, identificador del sitio.
+    1. DB_HOST = HOST para nuestro servidor MySQL
+    1. DB_PORT = PUERTO para nuestro servidor MySQL
+    1. DB_DATABASE = Nombre de la base de datos que creamos
+    1. DB_USERNAME = Nombre de usuario de MySQL
+    1. DB_PASSWORD = Si el usuario tiene contraseña
 
-## Code of Conduct
+## Dependencias
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Ejecute los siguientes comandos desde la consola dentro de nuestra carpeta raíz del proyecto para instalar todas las dependencias de PHP.
 
-## Security Vulnerabilities
+-   composer i
+-   php artisan config:cache
+-   php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Correr migraciones para la base de datos y correr la aplicación
+
+Ejecute los siguientes comandos desde la consola dentro de nuestra carpeta raíz del proyecto.
+
+-   php artisan migrate:fresh --seed
+    **Para finalizar corremos el servidor**
+-   _php artisan serve_ , este comando no es necesario si tenemos un servidor para descubrir nuestras aplicaciones automáticamente, simplemente accedemos a la url configurada en nuestro servidor para la aplicación
+
+## Construir aplicación front
+
+Ejecute el siguiente comando instalar para construir nuestros módulos de JavaScript y CSS
+
+-   npm install && npm run build
+
+Ahora puede acceder a la aplicación *weather_map*, por medio de la ip o url designada.
+
+Cualquier duda sobre la configuración del proyecto, puede comunicarse conmigo por medio de correo electrónico o celular. 
+**+57 3117310930**
+[juanpablomadariagacardona@gmail.com](mailto:mailjuanpablomadariagacardona@gmail.com)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El Framework de Laravel es un software de código abierto con licencia bajo [MIT license](https://opensource.org/licenses/MIT).
